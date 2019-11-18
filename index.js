@@ -5,50 +5,50 @@
 const Discord = require('discord.js');
 const GabeBot = new Discord.Client(); 
 
-// ARRAYS
+const response = new Array
+(
 
-// quotesArr
-// Array of Gabe Newell Quotes
-const quotesArr = 
-[
+	{
+		
+		'id' : 0,
+		'trigger' : 'ps3',
+		'quote' : "The PS3 is a total disaster on so many levels, I think it's really clear that Sony lost track of what customers and what developers wanted."
+		
+	},
+	{
 
-	"The PS3 is a total disaster on so many levels, I think it's really clear that Sony lost track of what customers and what developers wanted.", 
-	"I've always wanted to be a giant space crab."
+		'id' : 1,
+		'trigger' : 'crab',
+		'quote' : "I've always wanted to be a giant space crab."
 
-];
-
-// triggersArr
-// Array of triggers for GabeBot to speak
-const triggersArr = 
-[
-
-	"ps3",
-	"crab"
+	},
+	{
 	
-];
+		'id' : 2,
+		'trigger' : 'half-life',
+		'quote' : 'No'
+	
+	}
 
-const quotesArrLen = quotesArr.length;
-const triggersArrLen = triggersArr.length;
+);
 
 GabeBot.on('message', (message) => 
 {
 	
-	// IF message is not from GabeBot:
-	// check if a trigger was said, 
-	// if a trigger was said, say the associated quote
+	// IF previous message is NOT from Gabebot, proceed
 	if(message.author.bot === false)
 	{
 		
-		let messageContentStr = message.content;
-		messageContentStr = messageContentStr.toLowerCase();
+		let messageContent = message.content;
+		messageContent = messageContent.toLowerCase();
 		
-		for(let i = 0; i < triggersArrLen; i++)
+		for(let i = 0; i < response.length; i++)
 		{
 			
-			if(messageContentStr.includes(triggersArr[i]))
+			if(messageContent.includes(response[i]['trigger']))
 			{
-					
-				message.channel.send(quotesArr[i]);
+			
+				message.channel.send(response[i]['quote']);
 				
 			}
 		
