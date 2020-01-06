@@ -8,6 +8,7 @@ const Discord = require('discord.js');
 const GabeBot = new Discord.Client();
 
 const responseData = readInDataFunc.readInData('responseData.csv');
+const gameData = readInDataFunc.readInData('gameData.csv');
 
 // On message received, begin executing this code
 // IF previous message is NOT from Gabebot, proceed
@@ -22,9 +23,25 @@ GabeBot.on('message', (message) =>
 		let messageContent = message.content;
 		messageContent = messageContent.toLowerCase();
 		
-		const response = getRandomResponseFunc.getRandomResponse(messageContent, responseData);
+		if(messageContent.includes('what game should i play'))
+		{
+			
+			let game = 0;
+			
+			let numberOfGames = gameData.length;
+		
+			game = Math.floor(Math.random() * numberOfGames);
+			
+			const response = gameData[game]['game'];
+			
+			message.channel.send(response);
+			
+		}
 
-		message.channel.send(response);
+		//const response = getRandomResponseFunc.getRandomResponse(messageContent, responseData);
+		//message.channel.send(response);
+
+
 
 	}
 	

@@ -9,7 +9,6 @@ module.exports =
 	{
 		
 		let responseCounter = 0;
-		let quote = 0;
 		
 		for(let i = 0; i < responseData.length; i++)
 		{

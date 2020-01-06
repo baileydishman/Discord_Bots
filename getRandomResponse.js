@@ -11,6 +11,7 @@ module.exports =
 	{
 		
 		let responses = [];
+		let quote = 0;
 		
 		responses = getResponsesFunc.getResponses(message, responseData, responses);
 		
